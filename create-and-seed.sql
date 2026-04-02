@@ -32,6 +32,7 @@
 -- ============================================================
 -- Step 1: Create the database
 -- ============================================================
+DROP DATABASE IF EXISTS bookstore_inv;
 CREATE DATABASE bookstore_inv;
 \c bookstore_inv
 
@@ -39,7 +40,16 @@ CREATE DATABASE bookstore_inv;
 -- ============================================================
 -- Step 2: Create the table
 -- ============================================================
-
+DROP TABLE IF EXISTS books;
+CREATE TABLE books (
+    book_id     SERIAL          PRIMARY KEY,
+    title       TEXT            NOT NULL UNIQUE,
+    author      TEXT            NOT NULL UNIQUE,
+    genre       TEXT            NOT NULL,
+    price       NUMERIC(10, 2)  NOT NULL,
+    pages       INT             NOT NULL,
+    in_stock    BOOLEAN         DEFAULT TRUE
+);
 
 
 -- ============================================================
