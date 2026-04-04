@@ -16,31 +16,50 @@
 
 -- 1. Count the total number of products.
 --    Name the result column total_products.
-
+SELECT COUNT(*) 
+AS total_products 
+FROM products;
 
 -- 2. Count the number of products in the 'electronics' category.
 --    Name the result column electronics_count.
-
+SELECT COUNT(*) 
+AS electronics_count 
+FROM products
+WHERE category = 'electronics';
 
 -- 3. Find the total number of units in stock across all products.
 --    Name the result column total_stock.
-
+SELECT SUM(stock)
+AS total_stock
+FROM products;
 
 -- 4. Find the average price across all products.
 --    Round to 2 decimal places. Name the result column avg_price.
+SELECT ROUND(AVG(price), 2)
+AS avg_price
+FROM products;
 
 
 -- 5. Find the lowest and highest product prices in a single query.
 --    Name the columns min_price and max_price.
-
+SELECT 
+MIN(price) AS min_price,
+MAX(price) AS max_price
+FROM products;
 
 -- 6. Find the lowest and highest product ratings in a single query.
 --    Name the columns min_rating and max_rating.
-
+SELECT
+MIN(rating) AS min_rating,
+MAX(rating) AS max_rating
+FROM products;
 
 -- 7. Find the total units in stock for the 'sports' category.
 --    Name the result column sports_stock.
-
+SELECT SUM(stock)
+AS sports_stock
+FROM products
+WHERE category = 'sports';
 
 -- ============================================================
 -- Part 2B: GROUP BY
