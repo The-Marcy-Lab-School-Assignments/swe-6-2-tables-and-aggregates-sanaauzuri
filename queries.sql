@@ -67,31 +67,56 @@ WHERE category = 'sports';
 
 -- 8. Count the number of products in each category.
 --    Name the count column product_count.
+SELECT category,
+COUNT(*) AS product_count
+FROM products
+GROUP BY category;
 
 
 -- 9. Find the average price per category, rounded to 2 decimal places.
 --    Name the average column avg_price.
 --    Order the results from most expensive to least expensive.
-
+SELECT category,
+ROUND(AVG(price), 2) AS avg_price
+FROM products
+GROUP BY category
+ORDER BY avg_price DESC;
 
 -- 10. Find the total stock per category.
 --     Name the total column total_stock.
 --     Order from most to least stock.
-
+SELECT category,
+SUM(stock) AS total_stock
+FROM products
+GROUP BY category
+ORDER BY total_stock DESC;
 
 -- 11. Find the most expensive product price in each category.
 --     Name the column max_price. Order by category alphabetically.
+SELECT category,
+MAX(price) AS max_price
+FROM products
+GROUP BY category
+ORDER BY category ASC;
 
 
 -- 12. Find the average rating per brand, rounded to 2 decimal places.
 --     Name the average column avg_rating.
 --     Order from highest to lowest average rating.
-
+SELECT brand,
+ROUND(AVG(rating), 2) AS avg_rating
+FROM products
+GROUP BY brand
+ORDER BY avg_rating DESC;
 
 -- 13. Count the number of products per brand.
 --     Name the count column product_count.
 --     Order by count from highest to lowest.
-
+SELECT brand,
+COUNT(products) AS product_count
+FROM products
+GROUP BY brand
+ORDER BY product_count DESC;
 
 -- ============================================================
 -- Part 2C: HAVING
